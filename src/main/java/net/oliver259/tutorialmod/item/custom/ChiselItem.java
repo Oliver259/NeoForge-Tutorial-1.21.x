@@ -88,20 +88,35 @@ public class ChiselItem extends Item {
         super(properties);
     }
 
+    private Block getReversedBlock(Block block) {
+        for (Map.Entry<Block, Block> entry : CHISEL_MAP.entrySet()) {
+            if (entry.getValue() == block) {
+                return entry.getKey();
+            }
+        }
+        return null; // No reverse mapping found
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         Block clickedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 
-        if(CHISEL_MAP.containsKey(clickedBlock)) {
-            if(!level.isClientSide()) {
-                level.setBlockAndUpdate(context.getClickedPos(), CHISEL_MAP.get(clickedBlock).defaultBlockState());
+        boolean isCrouching = context.getPlayer() != null && context.getPlayer().isShiftKeyDown();
+
+        // Reverse map lookup if crouching
+        Block newBlock = isCrouching ? getReversedBlock(clickedBlock) : CHISEL_MAP.get(clickedBlock);
+
+        if (newBlock != null) {
+            if (!level.isClientSide()) {
+                level.setBlockAndUpdate(context.getClickedPos(), newBlock.defaultBlockState());
 
                 context.getItemInHand().hurtAndBreak(1, ((ServerLevel) level), context.getPlayer(),
                         item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
 
                 level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
             }
+            return InteractionResult.SUCCESS;
         }
 
         return InteractionResult.SUCCESS;
