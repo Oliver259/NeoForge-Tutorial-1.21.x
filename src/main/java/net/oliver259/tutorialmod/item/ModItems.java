@@ -6,6 +6,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.oliver259.tutorialmod.TutorialMod;
 import net.oliver259.tutorialmod.item.custom.ChiselItem;
+import net.oliver259.tutorialmod.item.custom.FuelItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS =  DeferredRegister.createItems(TutorialMod.MOD_ID);
@@ -18,6 +19,17 @@ public class ModItems {
 
     public static final DeferredItem<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(32)));
+
+    public static final DeferredItem<Item> RADISH = ITEMS.register("radish",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.RADISH)));
+
+    // Added using custom FuelItem class
+    public static final DeferredItem<Item> FROSTFIRE_ICE = ITEMS.register("frostfire_ice",
+            () -> new FuelItem(new Item.Properties(), 800));
+
+    // Added using FurnaceFuels.json in neoforge data folder
+    public static final DeferredItem<Item> STARLIGHT_ASHES = ITEMS.register("starlight_ashes",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

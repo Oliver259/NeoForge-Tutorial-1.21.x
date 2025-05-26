@@ -9,6 +9,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.oliver259.tutorialmod.TutorialMod;
 import net.oliver259.tutorialmod.block.ModBlocks;
+import org.spongepowered.asm.util.ObfuscationUtil;
 
 import java.util.function.Supplier;
 
@@ -24,6 +25,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_BISMUTH);
 
                         output.accept(ModItems.CHISEL);
+                        output.accept(ModItems.RADISH);
+
+                        output.accept(ModItems.FROSTFIRE_ICE);
+                        output.accept(ModItems.STARLIGHT_ASHES);
                     }).build());
 
     public static final Supplier<CreativeModeTab> BISMUTH_BLOCK_TAB = CREATIVE_MODE_TAB.register("bismuth_blocks_tab",
