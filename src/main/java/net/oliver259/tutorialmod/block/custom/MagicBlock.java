@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.oliver259.tutorialmod.block.ModBlocks;
-import net.oliver259.tutorialmod.item.ModItems;
+import net.oliver259.tutorialmod.util.ModTags;
 
 import java.util.List;
 
@@ -36,23 +36,25 @@ public class MagicBlock extends Block {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
         if(entity instanceof ItemEntity itemEntity) {
-            ItemStack itemStack = itemEntity.getItem();
-
-            if(itemStack.getItem() == ModItems.RAW_BISMUTH.get()) {
+            if(isValidItem(itemEntity.getItem())) {
                 itemEntity.setItem(new ItemStack(Items.DIAMOND, itemEntity.getItem().getCount()));
             }
 
-            if(itemStack.getItem() == Items.DANDELION) {
+            if(itemEntity.getItem().getItem() == Items.DANDELION) {
                 itemEntity.setItem(new ItemStack(Items.WITHER_ROSE, itemEntity.getItem().getCount()));
             }
 
-            if (itemStack.getItem() == ModBlocks.BISMUTH_BLOCK.get().asItem()) {
-                itemEntity.setItem(new ItemStack(Items.DIAMOND_BLOCK, itemStack.getCount()));
+            if (itemEntity.getItem().getItem() == ModBlocks.BISMUTH_BLOCK.get().asItem()) {
+                itemEntity.setItem(new ItemStack(Items.DIAMOND_BLOCK, itemEntity.getItem().getCount()));
             }
 
 
         }
         super.stepOn(level, pos, state, entity);
+    }
+
+    private boolean isValidItem(ItemStack item) {
+        return item.is(ModTags.Items.TRANSFORMABLE_ITEMS);
     }
 
     @Override
