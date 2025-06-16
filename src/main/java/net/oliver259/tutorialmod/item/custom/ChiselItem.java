@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.oliver259.tutorialmod.block.ModBlocks;
+import net.oliver259.tutorialmod.component.ModDataComponents;
 
 import java.util.List;
 import java.util.Map;
@@ -121,6 +122,8 @@ public class ChiselItem extends Item {
                         item -> context.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
 
                 level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);
+
+                context.getItemInHand().set(ModDataComponents.COORDINATES, context.getClickedPos());
             }
             return InteractionResult.SUCCESS;
         }
@@ -140,6 +143,10 @@ public class ChiselItem extends Item {
             tooltipComponents.add(Component.translatable("tooltip.tutorialmod.chisel.shift_down"));
         } else {
             tooltipComponents.add(Component.translatable("tooltip.tutorialmod.chisel.shift"));
+        }
+
+        if(stack.get(ModDataComponents.COORDINATES) != null) {
+            tooltipComponents.add(Component.literal("Last Block changed at " + stack.get(ModDataComponents.COORDINATES)));
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }

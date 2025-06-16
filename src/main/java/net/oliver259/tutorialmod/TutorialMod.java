@@ -2,6 +2,7 @@ package net.oliver259.tutorialmod;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.oliver259.tutorialmod.block.ModBlocks;
+import net.oliver259.tutorialmod.component.ModDataComponents;
 import net.oliver259.tutorialmod.item.ModCreativeModeTabs;
 import net.oliver259.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
@@ -42,6 +43,8 @@ public class TutorialMod {
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModDataComponents.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
