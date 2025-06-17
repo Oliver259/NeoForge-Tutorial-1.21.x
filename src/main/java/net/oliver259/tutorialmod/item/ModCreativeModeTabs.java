@@ -69,6 +69,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BISMUTH_PICKAXE);
                         output.accept(ModItems.BISMUTH_AXE);
                         output.accept(ModItems.BISMUTH_HOE);
+                        output.accept(ModItems.BISMUTH_HAMMER);
 
                     }).build());
 
