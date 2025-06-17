@@ -58,6 +58,12 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModBlocks.BISMUTH_LAMP);
 
+                        output.accept(ModItems.BISMUTH_SWORD);
+                        output.accept(ModItems.BISMUTH_PICKAXE);
+                        output.accept(ModItems.BISMUTH_SHOVEL);
+                        output.accept(ModItems.BISMUTH_AXE);
+                        output.accept(ModItems.BISMUTH_HOE);
+
                     }).build());
 
     public static void register(IEventBus eventBus) {

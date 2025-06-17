@@ -9,6 +9,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.oliver259.tutorialmod.TutorialMod;
 import net.oliver259.tutorialmod.block.ModBlocks;
+import net.oliver259.tutorialmod.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,12 +22,22 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(getAllBismuthBlocks());
+        tag(BlockTags.NEEDS_IRON_TOOL).add(getAllBismuthBlocks());
 
-        tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.BISMUTH_DEEPSLATE_ORE.get());
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.MAGIC_BLOCK.get());
 
         tag(BlockTags.FENCES).add(ModBlocks.BISMUTH_FENCE.get());
         tag(BlockTags.FENCE_GATES).add(ModBlocks.BISMUTH_FENCE_GATE.get());
         tag(BlockTags.WALLS).add(ModBlocks.BISMUTH_WALL.get());
+
+        tag(ModTags.Blocks.NEEDS_BISMUTH_TOOL)
+                .add(ModBlocks.BISMUTH_LAMP.get())
+                .addTag(BlockTags.NEEDS_IRON_TOOL);
+
+        tag(ModTags.Blocks.INCORRECT_FOR_BISMUTH_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .remove(ModTags.Blocks.NEEDS_BISMUTH_TOOL);
     }
 
     /**
@@ -38,5 +49,4 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .filter(block -> block.getName().getString().toLowerCase().contains("bismuth")) // Use getName() instead
                 .toArray(Block[]::new); // Correct array conversion
     }
-
 }
