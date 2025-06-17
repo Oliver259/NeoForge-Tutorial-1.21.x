@@ -1,6 +1,7 @@
 package net.oliver259.tutorialmod.datagen;
 
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.oliver259.tutorialmod.TutorialMod;
 import net.oliver259.tutorialmod.block.ModBlocks;
 import net.oliver259.tutorialmod.item.ModItems;
@@ -39,6 +40,63 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('X', ModItems.BISMUTH)
                 .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BISMUTH_SWORD.get())
+                .pattern(" X ")
+                .pattern(" X ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('X', ModItems.BISMUTH)
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.BISMUTH_PICKAXE.get())
+                .pattern("XXX")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('X', ModItems.BISMUTH)
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.BISMUTH_SHOVEL.get())
+                .pattern(" X ")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('X', ModItems.BISMUTH)
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BISMUTH_AXE.get())
+                .pattern("XX ")
+                .pattern("X# ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('X', ModItems.BISMUTH)
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BISMUTH_HOE.get())
+                .pattern("XX ")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('X', ModItems.BISMUTH)
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BISMUTH_LAMP.get())
+                .pattern(" X ")
+                .pattern("X#X")
+                .pattern(" X ")
+                .define('#', Blocks.GLOWSTONE)
+                .define('X', ModItems.BISMUTH)
+                .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MAGIC_BLOCK.get())
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .define('#', ModItems.BISMUTH)
+                .define('X', ModBlocks.BISMUTH_BLOCK)
+                .unlockedBy("has_bismuth_block", has(ModBlocks.BISMUTH_BLOCK)).save(recipeOutput);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BISMUTH.get(), 9)
                 .requires(ModBlocks.BISMUTH_BLOCK)
                 .unlockedBy("has_bismuth_block", has(ModBlocks.BISMUTH_BLOCK)).save(recipeOutput);
@@ -47,6 +105,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModBlocks.MAGIC_BLOCK)
                 .unlockedBy("has_magic_block", has(ModBlocks.MAGIC_BLOCK))
                 .save(recipeOutput, "tutorialmod:bismuth_from_magic_block");
+
 
         oreSmelting(recipeOutput, BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH.get(), 0.25f, 200, "bismuth");
         oreBlasting(recipeOutput, BISMUTH_SMELTABLES, RecipeCategory.MISC, ModItems.BISMUTH.get(), 0.25f, 100, "bismuth");
