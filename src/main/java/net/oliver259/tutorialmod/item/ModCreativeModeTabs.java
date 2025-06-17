@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.oliver259.tutorialmod.TutorialMod;
@@ -19,6 +20,7 @@ public class ModCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> BISMUTH_ITEMS_TAB = CREATIVE_MODE_TAB.register("bismuth_items_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.BISMUTH.get()))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "bismuth_blocks_tab"))
                     .title(Component.translatable("creativetab.tutorialmod.bismuth_items"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.BISMUTH);
@@ -33,8 +35,6 @@ public class ModCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> BISMUTH_BLOCK_TAB = CREATIVE_MODE_TAB.register("bismuth_blocks_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BISMUTH_BLOCK))
-                    // Makes Bismuth Items tab come BEFORE this Bismuth Block tab
-                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "bismuth_items_tab"))
                     .title(Component.translatable("creativetab.tutorialmod.bismuth_blocks"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModBlocks.BISMUTH_BLOCK);
@@ -58,11 +58,28 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModBlocks.BISMUTH_LAMP);
 
-                        output.accept(ModItems.BISMUTH_SWORD);
-                        output.accept(ModItems.BISMUTH_PICKAXE);
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> BISMUTH_TOOLS_TAB = CREATIVE_MODE_TAB.register("bismuth_tools_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack((ItemLike) ModItems.BISMUTH_PICKAXE))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "bismuth_items_tab"))
+                    .title(Component.translatable("creativetab.tutorialmod.bismuth_tools"))
+                    .displayItems((parameters, output) -> {
                         output.accept(ModItems.BISMUTH_SHOVEL);
+                        output.accept(ModItems.BISMUTH_PICKAXE);
                         output.accept(ModItems.BISMUTH_AXE);
                         output.accept(ModItems.BISMUTH_HOE);
+
+                    }).build());
+
+    public static final Supplier<CreativeModeTab> BISMUTH_COMBAT_TAB = CREATIVE_MODE_TAB.register("bismuth_combat_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack((ItemLike) ModItems.BISMUTH_SWORD))
+                    .withTabsBefore(ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "bismuth_tools_tab"))
+                    .title(Component.translatable("creativetab.tutorialmod.bismuth_combat"))
+                    .displayItems((parameters, output) -> {
+                        output.accept(ModItems.BISMUTH_SWORD);
+                        output.accept(ModItems.BISMUTH_AXE);
+
 
                     }).build());
 
