@@ -5,6 +5,7 @@ import net.oliver259.tutorialmod.block.ModBlocks;
 import net.oliver259.tutorialmod.component.ModDataComponents;
 import net.oliver259.tutorialmod.item.ModCreativeModeTabs;
 import net.oliver259.tutorialmod.item.ModItems;
+import net.oliver259.tutorialmod.util.ModItemProperties;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -81,7 +82,7 @@ public class TutorialMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            ModItemProperties.addCustomItemProperties();
         }
     }
 }
