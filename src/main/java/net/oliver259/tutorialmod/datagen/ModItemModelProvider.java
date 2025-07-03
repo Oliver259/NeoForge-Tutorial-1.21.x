@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
@@ -68,6 +69,67 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModItems.BISMUTH_HORSE_ARMOR.get());
         basicItem(ModItems.KAUPEN_SMITHING_TEMPLATE.get());
+
+        // Kaupen Bow
+        bowItem();
+    }
+
+    private void bowItem() {
+        ResourceLocation bow = ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "item/kaupen_bow");
+        ResourceLocation bow_0 = ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "item/kaupen_bow_pulling_0");
+        ResourceLocation bow_1 = ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "item/kaupen_bow_pulling_1");
+        ResourceLocation bow_2 = ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "item/kaupen_bow_pulling_2");
+
+        this.withExistingParent(ModItems.KAUPEN_BOW.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", bow)
+                .transforms()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                .rotation(-80, 260, -40)
+                .translation(-1, -2, 2.5f)
+                .scale(0.9f)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+                .rotation(-80, -280, 40)
+                .translation(-1, -2, 2.5f)
+                .scale(0.9f)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                .rotation(0, -90, 25)
+                .translation(1.13f, 3.2f, 1.13f)
+                .scale(0.68f)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+                .rotation(0, 90, -25)
+                .translation(1.13f, 3.2f, 1.13f)
+                .scale(0.68f)
+                .end()
+                .end()
+                .override()
+                .predicate(mcLoc("pulling"), 1)
+                .model(new ModelFile.UncheckedModelFile(bow_0))
+                .end()
+                .override()
+                .predicate(mcLoc("pulling"), 1)
+                .predicate(mcLoc("pull"), 0.65f)
+                .model(new ModelFile.UncheckedModelFile(bow_1))
+                .end()
+                .override()
+                .predicate(mcLoc("pulling"), 1)
+                .predicate(mcLoc("pull"), 0.9f)
+                .model(new ModelFile.UncheckedModelFile(bow_2))
+                .end();
+
+        this.withExistingParent("kaupen_bow_pulling_0", mcLoc("item/generated"))
+                .parent(new ModelFile.UncheckedModelFile(bow))
+                .texture("layer0", bow_0);
+
+        this.withExistingParent("kaupen_bow_pulling_1", mcLoc("item/generated"))
+                .parent(new ModelFile.UncheckedModelFile(bow))
+                .texture("layer0", bow_1);
+
+        this.withExistingParent("kaupen_bow_pulling_2", mcLoc("item/generated"))
+                .parent(new ModelFile.UncheckedModelFile(bow))
+                .texture("layer0", bow_2);
     }
 
     // Shoutout to El_Redstoniano for making this
