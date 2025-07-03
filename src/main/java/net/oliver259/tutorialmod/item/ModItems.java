@@ -7,10 +7,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.oliver259.tutorialmod.TutorialMod;
-import net.oliver259.tutorialmod.item.custom.ChiselItem;
-import net.oliver259.tutorialmod.item.custom.FuelItem;
-import net.oliver259.tutorialmod.item.custom.HammerItem;
-import net.oliver259.tutorialmod.item.custom.ModArmorItem;
+import net.oliver259.tutorialmod.item.custom.*;
 
 import java.util.List;
 
@@ -91,7 +88,7 @@ public class ModItems {
             () -> SmithingTemplateItem.createArmorTrimTemplate(ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "kaupen")));
 
     public static final DeferredItem<Item> KAUPEN_BOW = ITEMS.register("kaupen_bow",
-            () -> new BowItem(new Item.Properties().durability(500)));
+            () -> new KaupenBowItem(new Item.Properties().durability(500)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

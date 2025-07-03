@@ -1,5 +1,10 @@
 package net.oliver259.tutorialmod.event;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.oliver259.tutorialmod.TutorialMod;
 import net.oliver259.tutorialmod.item.custom.HammerItem;
 import net.minecraft.core.BlockPos;
@@ -38,6 +43,15 @@ public class ModEvents {
                 serverPlayer.gameMode.destroyBlock(pos);
                 HARVESTED_BLOCKS.remove(pos);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onArrowHit(LivingDamageEvent.Post event) {
+        if (event.getSource().getDirectEntity() instanceof AbstractArrow arrow &&
+                arrow.getTags().contains("kaupen_glow_arrow") &&
+                event.getEntity() instanceof LivingEntity target) {
+            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 200, 0)); // 10 seconds
         }
     }
 }
