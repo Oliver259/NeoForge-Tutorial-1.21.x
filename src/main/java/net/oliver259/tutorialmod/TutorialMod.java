@@ -5,6 +5,7 @@ import net.oliver259.tutorialmod.block.ModBlocks;
 import net.oliver259.tutorialmod.component.ModDataComponents;
 import net.oliver259.tutorialmod.item.ModCreativeModeTabs;
 import net.oliver259.tutorialmod.item.ModItems;
+import net.oliver259.tutorialmod.sound.ModSounds;
 import net.oliver259.tutorialmod.util.ModItemProperties;
 import org.slf4j.Logger;
 
@@ -46,6 +47,7 @@ public class TutorialMod {
         ModBlocks.register(modEventBus);
 
         ModDataComponents.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
