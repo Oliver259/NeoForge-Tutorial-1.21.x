@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
@@ -72,7 +73,11 @@ public class ModEvents {
         if(event.getEntity() instanceof LivingEntity target && event.getSource().getDirectEntity() instanceof Player player) {
             ItemStack mainHandItem = getMainHandItem(player);
             if(mainHandItem.getItem() == Items.FLINT_AND_STEEL) {
-                target.setRemainingFireTicks(100);
+                if(event.getEntity() instanceof Creeper creeper) {
+                    creeper.ignite();
+                } else {
+                    target.setRemainingFireTicks(100);
+                }
 
                 // Increase damage by 1
                 int newDamage = mainHandItem.getDamageValue() + 1;
