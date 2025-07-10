@@ -56,6 +56,8 @@
   "creativetab.tutorialmod.bismuth_tools": "Bismuth Tools & Utilities",
   "creativetab.tutorialmod.bismuth_combat": "Bismuth Combat",
 
+  "effect.tutorialmod.slimey": "Slimey",
+
   "tooltip.tutorialmod.magic_block.tooltip": "This Block is very §9MAGICAL§r",
 
   "tooltip.tutorialmod.chisel.shift_down": "This item can chisel Blocks into Bricks and change some blocks into other blocks",

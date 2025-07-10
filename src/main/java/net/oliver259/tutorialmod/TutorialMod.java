@@ -3,6 +3,7 @@ package net.oliver259.tutorialmod;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.oliver259.tutorialmod.block.ModBlocks;
 import net.oliver259.tutorialmod.component.ModDataComponents;
+import net.oliver259.tutorialmod.effect.ModEffects;
 import net.oliver259.tutorialmod.item.ModCreativeModeTabs;
 import net.oliver259.tutorialmod.item.ModItems;
 import net.oliver259.tutorialmod.sound.ModSounds;
@@ -48,6 +49,8 @@ public class TutorialMod {
 
         ModDataComponents.register(modEventBus);
         ModSounds.register(modEventBus);
+
+        ModEffects.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
