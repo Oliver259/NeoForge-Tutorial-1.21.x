@@ -72,6 +72,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModItems.BAR_BRAWL_MUSIC_DISC.get());
 
+        basicItem(ModItems.RADISH_SEEDS.get());
+
         // Kaupen Bow
         bowItem();
     }
