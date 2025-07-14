@@ -77,6 +77,14 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Kaupen Bow
         bowItem();
+
+        saplingItem(ModBlocks.BLOODWOOD_SAPLING);
+    }
+
+    private ItemModelBuilder saplingItem(DeferredBlock<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID, "block/" + item.getId().getPath()));
     }
 
     private void bowItem() {
