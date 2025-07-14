@@ -80,6 +80,7 @@ public class ModEvents {
                 }
 
                 // Increase damage by 1
+                if(!player.isCreative()) {
                 int newDamage = mainHandItem.getDamageValue() + 1;
 
                 if (newDamage >= mainHandItem.getMaxDamage()) {
@@ -101,6 +102,7 @@ public class ModEvents {
                 }
 
 //                player.sendSystemMessage(Component.literal(player.getName().getString() + " ignited " + target.getName().getString() + " with Flint and Steel"));
+                }
             }
         }
     }
