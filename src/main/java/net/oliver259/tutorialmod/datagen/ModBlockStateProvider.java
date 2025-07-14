@@ -63,7 +63,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.BISMUTH_NETHER_ORE);
 
         logBlock((RotatedPillarBlock) ModBlocks.BLOODWOOD_LOG.get());
-//       // TODO: change texture to sapling
+        // First block texture is sides, second block texture is top and bottom
         axisBlock((RotatedPillarBlock) ModBlocks.BLOODWOOD_WOOD.get(), blockTexture(ModBlocks.BLOODWOOD_LOG.get()), blockTexture(ModBlocks.BLOODWOOD_LOG.get()));
         logBlock((RotatedPillarBlock) ModBlocks.STRIPPED_BLOODWOOD_LOG.get());
         axisBlock((RotatedPillarBlock) ModBlocks.STRIPPED_BLOODWOOD_WOOD.get(), blockTexture(ModBlocks.STRIPPED_BLOODWOOD_LOG.get()), blockTexture(ModBlocks.STRIPPED_BLOODWOOD_LOG.get()));
