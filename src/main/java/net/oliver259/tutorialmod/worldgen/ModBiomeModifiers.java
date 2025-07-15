@@ -19,6 +19,8 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_END_BISMUTH_ORE = registerKey("add_end_bismuth_ore");
 
     public static final ResourceKey<BiomeModifier> ADD_TREE_BLOODWOOD = registerKey("add_tree_bloodwood");
+
+    public static final ResourceKey<BiomeModifier> ADD_GOJI_BERRY_BUSH = registerKey("add_goji_berry_bush");
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         // Configured Features -> Placed Features -> Biome Modifiers
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -51,6 +53,10 @@ public class ModBiomeModifiers {
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BLOODWOOD_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
+        context.register(ADD_GOJI_BERRY_BUSH, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.FOREST)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.GOJI_BERRY_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }
 
