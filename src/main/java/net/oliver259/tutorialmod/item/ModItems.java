@@ -4,10 +4,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.oliver259.tutorialmod.TutorialMod;
 import net.oliver259.tutorialmod.block.ModBlocks;
+import net.oliver259.tutorialmod.entity.ModEntities;
 import net.oliver259.tutorialmod.item.custom.*;
 import net.oliver259.tutorialmod.sound.ModSounds;
 
@@ -100,6 +102,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> GOJI_BERRIES = ITEMS.register("goji_berries",
             () -> new ItemNameBlockItem(ModBlocks.GOJI_BERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.GOJI_BERRY)));
+
+    public static final DeferredItem<Item> GECKO_SPAWN_EGG = ITEMS.register("gecko_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GECKO, 0x31afaf, 0xffac00,
+                    new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

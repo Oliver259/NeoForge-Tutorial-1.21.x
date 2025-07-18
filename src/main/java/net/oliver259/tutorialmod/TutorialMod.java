@@ -1,10 +1,13 @@
 package net.oliver259.tutorialmod;
 
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.oliver259.tutorialmod.block.ModBlocks;
 import net.oliver259.tutorialmod.component.ModDataComponents;
 import net.oliver259.tutorialmod.effect.ModEffects;
 import net.oliver259.tutorialmod.enchantment.ModEnchantmentEffects;
+import net.oliver259.tutorialmod.entity.ModEntities;
+import net.oliver259.tutorialmod.entity.client.GeckoRenderer;
 import net.oliver259.tutorialmod.item.ModCreativeModeTabs;
 import net.oliver259.tutorialmod.item.ModItems;
 import net.oliver259.tutorialmod.potion.ModPotions;
@@ -56,6 +59,7 @@ public class TutorialMod {
         ModPotions.register(modEventBus);
 
         ModEnchantmentEffects.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -93,6 +97,8 @@ public class TutorialMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
+
+            EntityRenderers.register(ModEntities.GECKO.get(), GeckoRenderer::new);
         }
     }
 }
