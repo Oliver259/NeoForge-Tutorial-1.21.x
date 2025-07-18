@@ -41,6 +41,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('X', ModItems.BISMUTH)
                 .unlockedBy("has_bismuth", has(ModItems.BISMUTH)).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BAMBOO_SWORD.get())
+                .pattern(" X ")
+                .pattern(" X ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('X', Items.BAMBOO)
+                .unlockedBy("has_bamboo", has(Items.BAMBOO)).save(recipeOutput);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BISMUTH_SWORD.get())
                 .pattern(" X ")
                 .pattern(" X ")

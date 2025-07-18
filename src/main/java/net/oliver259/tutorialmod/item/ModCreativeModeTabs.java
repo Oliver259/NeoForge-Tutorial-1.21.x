@@ -107,6 +107,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.KAUPEN_SMITHING_TEMPLATE);
 
                         output.accept(ModItems.KAUPEN_BOW);
+
+                        output.accept(ModItems.BAMBOO_SWORD);
                     }).build());
 
     public static void register(IEventBus eventBus) {

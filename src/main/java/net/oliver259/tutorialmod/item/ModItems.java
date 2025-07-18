@@ -25,6 +25,10 @@ public class ModItems {
     public static final DeferredItem<Item> CHISEL = ITEMS.register("chisel",
             () -> new ChiselItem(new Item.Properties().durability(2000)));
 
+    public static final DeferredItem<SwordItem> BAMBOO_SWORD = ITEMS.register("bamboo_sword",
+            () -> new SwordItem(Tiers.WOOD, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(Tiers.WOOD, 5, -2.4f))));
+
     public static final DeferredItem<Item> RADISH = ITEMS.register("radish",
             () -> new Item(new Item.Properties().food(ModFoodProperties.RADISH)) {
                 @Override

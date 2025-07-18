@@ -55,6 +55,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModBlocks.BISMUTH_DOOR.asItem());
 
+        handheldItem(ModItems.BAMBOO_SWORD);
         handheldItem(ModItems.BISMUTH_SWORD);
         handheldItem(ModItems.BISMUTH_PICKAXE);
         handheldItem(ModItems.BISMUTH_SHOVEL);
