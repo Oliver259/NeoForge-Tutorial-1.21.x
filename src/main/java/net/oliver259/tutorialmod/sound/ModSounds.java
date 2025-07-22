@@ -25,6 +25,11 @@ public class ModSounds {
     public static final Supplier<SoundEvent> MAGIC_BLOCK_HIT = registerSoundEvent("magic_block_hit");
     public static final Supplier<SoundEvent> MAGIC_BLOCK_FALL = registerSoundEvent("magic_block_fall");
 
+    // Gecko sounds are reused from axolotl sounds
+    public static final Supplier<SoundEvent> GECKO_IDLE = registerSoundEvent("gecko_idle");
+    public static final Supplier<SoundEvent> GECKO_HURT = registerSoundEvent("gecko_hurt");
+    public static final Supplier<SoundEvent> GECKO_DEATH = registerSoundEvent("gecko_death");
+
     public static final DeferredSoundType MAGIC_BLOCK_SOUNDS = new DeferredSoundType(1, 1f,
             ModSounds.MAGIC_BLOCK_BREAK, ModSounds.MAGIC_BLOCK_STEP, ModSounds.MAGIC_BLOCK_PLACE,
             ModSounds.MAGIC_BLOCK_HIT, ModSounds.MAGIC_BLOCK_FALL);

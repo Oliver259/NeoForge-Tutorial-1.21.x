@@ -35,6 +35,35 @@
       "tutorialmod:magic_block_fall"
     ]
   },
+
+  "gecko_idle": {
+    "subtitle": "Gecko chirps",
+    "sounds": [
+      "tutorialmod:gecko_idle1",
+      "tutorialmod:gecko_idle2",
+      "tutorialmod:gecko_idle3",
+      "tutorialmod:gecko_idle4"
+    ]
+  },
+
+  "gecko_hurt": {
+    "subtitle": "Gecko hurts",
+    "sounds": [
+      "tutorialmod:gecko_hurt1",
+      "tutorialmod:gecko_hurt2",
+      "tutorialmod:gecko_hurt3",
+      "tutorialmod:gecko_hurt4"
+    ]
+  },
+
+  "gecko_death": {
+    "subtitle": "Gecko dies",
+    "sounds": [
+      "tutorialmod:gecko_death1",
+      "tutorialmod:gecko_death2"
+    ]
+  },
+
     "bar_brawl": {
     "sounds": [
       {

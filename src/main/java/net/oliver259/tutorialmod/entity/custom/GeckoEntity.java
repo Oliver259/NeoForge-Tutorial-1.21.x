@@ -23,6 +23,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.oliver259.tutorialmod.entity.GeckoVariant;
 import net.oliver259.tutorialmod.entity.ModEntities;
 import net.oliver259.tutorialmod.item.ModItems;
+import net.oliver259.tutorialmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 public class GeckoEntity extends Animal {
@@ -141,19 +142,19 @@ public class GeckoEntity extends Animal {
     }
 
     /* SOUNDS */
-    // TODO: Make sounds show gecko instead of axolotl in subtitles
+    // Gecko sounds are reused from axolotl sounds
     @Override
     protected @Nullable SoundEvent getAmbientSound() {
-        return SoundEvents.AXOLOTL_IDLE_AIR;
+        return ModSounds.GECKO_IDLE.get();
     }
 
     @Override
     protected @Nullable SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.AXOLOTL_HURT;
+        return ModSounds.GECKO_HURT.get();
     }
 
     @Override
     protected @Nullable SoundEvent getDeathSound() {
-        return SoundEvents.AXOLOTL_DEATH;
+        return ModSounds.GECKO_DEATH.get();
     }
 }
