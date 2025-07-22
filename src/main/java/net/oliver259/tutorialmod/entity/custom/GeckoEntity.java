@@ -1,12 +1,16 @@
 package net.oliver259.tutorialmod.entity.custom;
 
 import net.minecraft.Util;
+import net.minecraft.client.gui.components.SubtitleOverlay;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -134,5 +138,22 @@ public class GeckoEntity extends Animal {
         this.setVariant(variant);
 
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+    }
+
+    /* SOUNDS */
+    // TODO: Make sounds show gecko instead of axolotl in subtitles
+    @Override
+    protected @Nullable SoundEvent getAmbientSound() {
+        return SoundEvents.AXOLOTL_IDLE_AIR;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEvents.AXOLOTL_HURT;
+    }
+
+    @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return SoundEvents.AXOLOTL_DEATH;
     }
 }
