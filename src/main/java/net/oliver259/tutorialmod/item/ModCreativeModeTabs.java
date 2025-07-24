@@ -110,6 +110,7 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.KAUPEN_BOW);
                         output.accept(ModItems.TOMAHAWK);
+                        output.accept(ModItems.COOL_SWORD);
                     }).build());
 
     public static void register(IEventBus eventBus) {

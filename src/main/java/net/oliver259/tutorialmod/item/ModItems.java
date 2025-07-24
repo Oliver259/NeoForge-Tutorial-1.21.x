@@ -110,6 +110,10 @@ public class ModItems {
     public static final DeferredItem<Item> TOMAHAWK = ITEMS.register("tomahawk",
             () -> new TomahawkItem(new Item.Properties().stacksTo(16)));
 
+    public static final DeferredItem<SwordItem> COOL_SWORD = ITEMS.register("cool_sword",
+            () -> new SwordItem(Tiers.DIAMOND, new Item.Properties()
+                    .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 5, -2.4f))));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

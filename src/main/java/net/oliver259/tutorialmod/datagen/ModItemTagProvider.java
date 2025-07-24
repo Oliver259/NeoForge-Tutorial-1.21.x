@@ -32,7 +32,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Items.COMPASS);
 
         tag(ItemTags.SWORDS)
-                .add(ModItems.BISMUTH_SWORD.get());
+                .add(ModItems.BISMUTH_SWORD.get())
+                .add(ModItems.COOL_SWORD.get());
         tag(ItemTags.PICKAXES)
                 .add(ModItems.BISMUTH_PICKAXE.get());
         tag(ItemTags.SHOVELS)
