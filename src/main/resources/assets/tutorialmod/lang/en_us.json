@@ -38,6 +38,8 @@
 
   "item.tutorialmod.gecko_spawn_egg": "Gecko Spawn Egg",
 
+  "item.tutorialmod.tomahawk": "Tomahawk",
+
   "block.tutorialmod.bismuth_block": "Block of Bismuth",
   "block.tutorialmod.bismuth_ore": "Bismuth Ore",
   "block.tutorialmod.bismuth_deepslate_ore": "Bismuth Deepslate Ore",
@@ -100,6 +102,7 @@
   "trim_pattern.tutorialmod.kaupen": "Kaupen Armor Trim",
   "trim_material.tutorialmod.bismuth": "Bismuth Material",
 
-  "entity.tutorialmod.gecko": "Gecko"
+  "entity.tutorialmod.gecko": "Gecko",
+  "entity.tutorialmod.tomahawk": "Tomahawk"
 
 }

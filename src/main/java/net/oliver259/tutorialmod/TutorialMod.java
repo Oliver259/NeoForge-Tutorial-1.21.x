@@ -8,6 +8,7 @@ import net.oliver259.tutorialmod.effect.ModEffects;
 import net.oliver259.tutorialmod.enchantment.ModEnchantmentEffects;
 import net.oliver259.tutorialmod.entity.ModEntities;
 import net.oliver259.tutorialmod.entity.client.GeckoRenderer;
+import net.oliver259.tutorialmod.entity.client.TomahawkProjectileRenderer;
 import net.oliver259.tutorialmod.item.ModCreativeModeTabs;
 import net.oliver259.tutorialmod.item.ModItems;
 import net.oliver259.tutorialmod.potion.ModPotions;
@@ -99,6 +100,7 @@ public class TutorialMod {
             ModItemProperties.addCustomItemProperties();
 
             EntityRenderers.register(ModEntities.GECKO.get(), GeckoRenderer::new);
+            EntityRenderers.register(ModEntities.TOMMAHAWK.get(), TomahawkProjectileRenderer::new);
         }
     }
 }
