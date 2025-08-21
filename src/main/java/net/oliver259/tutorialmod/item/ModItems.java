@@ -107,6 +107,10 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.GECKO, 0x31afaf, 0xffac00,
                     new Item.Properties()));
 
+    public static final DeferredItem<Item> SNOWMAN_SPAWN_EGG = ITEMS.register("snowman_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SNOWMAN, 0xcbeff6, 0x80181d,
+                    new Item.Properties()));
+
     public static final DeferredItem<Item> TOMAHAWK = ITEMS.register("tomahawk",
             () -> new TomahawkItem(new Item.Properties().stacksTo(16)));
 
