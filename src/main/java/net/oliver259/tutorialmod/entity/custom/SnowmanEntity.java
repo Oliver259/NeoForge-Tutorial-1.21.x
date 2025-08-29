@@ -1,11 +1,15 @@
 package net.oliver259.tutorialmod.entity.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.BossEvent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -26,6 +30,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 public class SnowmanEntity extends Monster {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
+
+    private final ServerBossEvent bossEvent =
+            new ServerBossEvent(Component.literal("Evil Snowman"), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.NOTCHED_10);
 
     public SnowmanEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
@@ -49,6 +56,7 @@ public class SnowmanEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 100d)
                 .add(Attributes.FOLLOW_RANGE, 35.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.23F)
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
@@ -61,6 +69,7 @@ public class SnowmanEntity extends Monster {
     @Override
     public void aiStep() {
         super.aiStep();
+        this.bossEvent.setProgress(this.getHealth() / this.getMaxHealth());
         if (!this.level().isClientSide) {
 //            if (this.level().getBiome(this.blockPosition()).is(BiomeTags.SNOW_GOLEM_MELTS)) {
 //                this.hurt(this.damageSources().onFire(), 1.0F);
@@ -102,4 +111,27 @@ public class SnowmanEntity extends Monster {
         }
     }
 
+    /* BOSS BAR */
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer serverPlayer) {
+        super.startSeenByPlayer(serverPlayer);
+        this.bossEvent.addPlayer(serverPlayer);
+    }
+
+    @Override
+    public void stopSeenByPlayer(ServerPlayer serverPlayer) {
+        super.stopSeenByPlayer(serverPlayer);
+        this.bossEvent.removePlayer(serverPlayer);
+    }
+
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        boolean success = super.doHurtTarget(entity);
+
+        if (success && entity instanceof LivingEntity livingTarget) {
+            livingTarget.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 3));
+        }
+        return success;
+    }
 }

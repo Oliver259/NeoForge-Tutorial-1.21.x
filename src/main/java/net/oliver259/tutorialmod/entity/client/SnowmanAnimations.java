@@ -11,6 +11,8 @@ import net.minecraft.client.animation.KeyframeAnimations;
  * @author Author
  */
 
+// TODO: Make walking and attack animations
+
 // Snowman model and animations were made by following the tutorial by MoreByKev https://www.youtube.com/watch?v=7nZx5hqr_1s
 public class SnowmanAnimations {
 	public static final AnimationDefinition ANIM_SNOWMAN_IDLE = AnimationDefinition.Builder.withLength(4.0F).looping()
